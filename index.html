@@ -10,9 +10,7 @@
 <helmet data-dc-atomics>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="./image-slot.js"></script>
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
 html,body{margin:0;padding:0}
 body{background:#F1F4F8;font-family:Manrope,system-ui,sans-serif;color:#0A1F45;-webkit-font-smoothing:antialiased}
 a{color:#1E63C8;text-decoration:none}
@@ -132,7 +130,7 @@ a:hover{color:#0A1F45}
 
           <div style="position:relative;animation:rise 1s both;animation-delay:.35s">
             <div class="m-shot" style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.18);height:340px;background:rgba(255,255,255,.05)">
-              <image-slot id="capa-frota" shape="rect" placeholder="Foto: carreta / corredor logístico"></image-slot>
+              <img src="./assets/capa.jpg" alt="Carreta em corredor logístico" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
             </div>
             <div class="m-bl" style="position:absolute;left:-28px;bottom:-30px;padding:22px 26px;border-radius:16px;background:#fff;box-shadow:0 22px 48px rgba(5,17,40,.34);transform:translate(calc(var(--mx,0) * -14px),calc(var(--my,0) * -14px));transition:transform .5s cubic-bezier(.2,.8,.2,1)">
               <div style="font:600 40px/1 Sora,sans-serif;color:#0A1F45;letter-spacing:-.03em">70<span style="font-size:22px;color:#1E63C8">%</span></div>
@@ -199,7 +197,7 @@ a:hover{color:#0A1F45}
               <p style="margin:18px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.76)">Cerca de 70% da exposição de risco da Mondelēz concentra-se em corredores críticos com destino à Região Metropolitana do Rio de Janeiro.</p>
             </div>
             <div style="border-radius:20px;overflow:hidden;height:210px;border:1px solid rgba(10,31,69,.08);animation:rise .7s both;animation-delay:.3s">
-              <image-slot id="diag-corredor" shape="rect" placeholder="Foto/mapa: corredor RJ"></image-slot>
+              <img src="./assets/rj.jpg" alt="Corredor logístico com destino ao Rio de Janeiro" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
             </div>
           </div>
         </div>
