@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+html,body{margin:0;padding:0}
+body{background:#F1F4F8;font-family:Manrope,system-ui,sans-serif;color:#0A1F45;-webkit-font-smoothing:antialiased}
+a{color:#1E63C8;text-decoration:none}
+a:hover{color:#0A1F45}
+*{box-sizing:border-box}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes riseSm{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes widen{from{width:0}to{width:100%}}
+@keyframes pulseRed{0%,100%{box-shadow:0 0 0 0 rgba(208,52,44,.35)}50%{box-shadow:0 0 0 14px rgba(208,52,44,0)}}
+@keyframes dashRun{to{stroke-dashoffset:-40}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="min-height:100vh;background:#F1F4F8;overflow-x:hidden">
+
+  <header style="position:sticky;top:0;z-index:40;background:rgba(241,244,248,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(10,31,69,.1)">
+    <div style="max-width:1320px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;gap:32px">
+      <div style="display:flex;align-items:center;gap:14px;flex:none">
+        <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,#123A7A,#0A1F45);display:flex;align-items:center;justify-content:center;color:#fff;font:700 13px Sora,sans-serif">SMP</div>
+        <div style="display:flex;flex-direction:column;gap:1px">
+          <span style="font:600 13px/1.1 Sora,sans-serif;letter-spacing:.01em">Mondelēz International <span style="color:#8A94A6;font-weight:400">&amp;</span> Apisul</span>
+          <span style="font:500 10.5px/1.1 Manrope,sans-serif;color:#8A94A6;letter-spacing:.12em;text-transform:uppercase">Parceria Estratégica · Segurança Ativa</span>
+        </div>
+      </div>
+      <nav style="display:flex;gap:4px;margin-left:auto;flex-wrap:wrap">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="7">
+          <button onClick="{{ t.go }}" style="{{ t.btnStyle }}">
+            <span style="font:600 9.5px Manrope,sans-serif;opacity:.55;letter-spacing:.08em">{{ t.num }}</span>
+            <span>{{ t.label }}</span>
+          </button>
+        </sc-for>
+      </nav>
+    </div>
+    <div style="height:2px;background:rgba(10,31,69,.08)">
+      <div style="{{ progressStyle }}"></div>
+    </div>
+  </header>
+
+  <main style="position:relative">
+
+    <sc-if value="{{ isT1 }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="01 Capa" style="position:relative;min-height:calc(100vh - 74px);background:linear-gradient(150deg,#0A1F45 0%,#0E2B5E 48%,#123A7A 100%);overflow:hidden;display:flex;align-items:center">
+        <div style="position:absolute;inset:0;opacity:.5;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:26px 26px"></div>
+        <div style="position:absolute;top:-140px;right:-80px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(58,124,220,.55),rgba(10,31,69,0) 65%);transform:translate(calc(var(--mx,0) * 26px),calc(var(--my,0) * 26px));transition:transform .5s cubic-bezier(.2,.8,.2,1)"></div>
+        <div style="position:absolute;bottom:-180px;left:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(208,52,44,.34),rgba(10,31,69,0) 62%);transform:translate(calc(var(--mx,0) * -20px),calc(var(--my,0) * -20px));transition:transform .6s cubic-bezier(.2,.8,.2,1)"></div>
+
+        <div style="position:relative;max-width:1320px;margin:0 auto;padding:96px 40px;width:100%;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:center">
+          <div>
+            <div style="display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;background:rgba(208,52,44,.14);border:1px solid rgba(208,52,44,.45);animation:riseSm .6s both">
+              <span style="width:8px;height:8px;border-radius:50%;background:#FF6257;animation:blink 1.6s infinite"></span>
+              <span style="font:600 11px Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#FFB4AD">Risco de cancelamento de SMP</span>
+            </div>
+            <h1 style="margin:26px 0 0;font:600 clamp(38px,4.6vw,68px)/1.06 Sora,sans-serif;color:#fff;letter-spacing:-.025em;text-wrap:balance">
+              <span style="display:block;animation:rise .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:.08s">Evolução Sistêmica</span>
+              <span style="display:block;animation:rise .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:.18s">e Segurança Ativa:</span>
+              <span style="display:block;color:#7FB0FF;animation:rise .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:.28s">Superando a “Cegueira Operacional”</span>
+            </h1>
+            <p style="margin:26px 0 0;max-width:620px;font:400 19px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.74);animation:rise .8s both;animation-delay:.4s">Diretrizes para Eliminação do Risco de Cancelamento de SMP</p>
+            <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:12px;animation:rise .8s both;animation-delay:.5s">
+              <button onClick="{{ next }}" style="display:inline-flex;align-items:center;gap:12px;padding:16px 26px;border:0;border-radius:12px;background:#fff;color:#0A1F45;font:600 15px Manrope,sans-serif;cursor:pointer;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-3px);box-shadow:0 16px 34px rgba(0,0,0,.28)">Iniciar diagnóstico<span style="font-size:17px">→</span></button>
+              <button onClick="{{ goSolution }}" style="display:inline-flex;align-items:center;gap:10px;padding:16px 26px;border:1px solid rgba(255,255,255,.32);border-radius:12px;background:transparent;color:#fff;font:600 15px Manrope,sans-serif;cursor:pointer;transition:background .25s,border-color .25s" style-hover="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)">Ver solução definitiva</button>
+            </div>
+            <div style="margin-top:56px;display:flex;flex-wrap:wrap;gap:44px;animation:fade 1s both;animation-delay:.7s">
+              <div>
+                <div style="font:600 10px Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45)">Entidades</div>
+                <div style="margin-top:8px;font:500 15px Sora,sans-serif;color:#fff">Mondelēz International &amp; Apisul</div>
+              </div>
+              <div>
+                <div style="font:600 10px Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45)">Data</div>
+                <div style="margin-top:8px;font:500 15px Sora,sans-serif;color:#fff">Setembro de 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="position:relative;animation:rise 1s both;animation-delay:.35s">
+            <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.18);height:340px;background:rgba(255,255,255,.05)">
+              <image-slot id="capa-frota" shape="rect" placeholder="Foto: carreta / corredor logístico"></image-slot>
+            </div>
+            <div style="position:absolute;left:-28px;bottom:-30px;padding:22px 26px;border-radius:16px;background:#fff;box-shadow:0 22px 48px rgba(5,17,40,.34);transform:translate(calc(var(--mx,0) * -14px),calc(var(--my,0) * -14px));transition:transform .5s cubic-bezier(.2,.8,.2,1)">
+              <div style="font:600 40px/1 Sora,sans-serif;color:#0A1F45;letter-spacing:-.03em">70<span style="font-size:22px;color:#1E63C8">%</span></div>
+              <div style="margin-top:8px;max-width:170px;font:500 12px/1.45 Manrope,sans-serif;color:#5B6779">da exposição de risco em corredores com destino ao Rio de Janeiro</div>
+            </div>
+            <div style="position:absolute;right:-18px;top:-22px;padding:12px 16px;border-radius:12px;background:#D0342C;color:#fff;font:600 11.5px Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;animation:pulseRed 2.4s infinite">Janela cega ativa</div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isT2 }}">
+      <section data-screen-label="02 Diagnóstico" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
+        <div style="animation:riseSm .6s both">
+          <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#1E63C8">O Diagnóstico</span>
+          <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:900px;text-wrap:balance">A Vulnerabilidade Atual: O Fenômeno da “Cegueira Operacional”</h2>
+        </div>
+
+        <div style="margin-top:52px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:32px;align-items:start">
+          <div style="padding:36px;border-radius:20px;background:#fff;border:1px solid rgba(10,31,69,.08);box-shadow:0 1px 3px rgba(10,31,69,.06);animation:rise .7s both;animation-delay:.1s">
+            <div style="font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8A94A6">Fluxo atual de cancelamento</div>
+            <div style="margin-top:28px;display:flex;align-items:stretch;gap:14px;flex-wrap:wrap">
+              <div style="flex:1 1 190px;min-width:0;padding:20px;border-radius:14px;background:#0A1F45;color:#fff;animation:riseSm .6s both;animation-delay:.2s">
+                <div style="font:600 12px Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#7FB0FF">SMP ativa</div>
+                <div style="margin-top:8px;font:400 13.5px/1.5 Manrope,sans-serif;color:rgba(255,255,255,.78)">Veículo monitorado, rota original válida</div>
+              </div>
+              <div style="align-self:center;font:400 20px Manrope,sans-serif;color:#B6BFCC;animation:fade .6s both;animation-delay:.3s">→</div>
+              <div style="flex:1.15 1 210px;min-width:0;padding:20px;border-radius:14px;background:rgba(208,52,44,.07);border:1.5px dashed #D0342C;animation:riseSm .6s both;animation-delay:.4s">
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span style="width:7px;height:7px;border-radius:50%;background:#D0342C;animation:blink 1.4s infinite"></span>
+                  <span style="font:700 12px Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#D0342C">Janela cega</span>
+                </div>
+                <div style="margin-top:8px;font:400 13.5px/1.5 Manrope,sans-serif;color:#8C2A24">Entre o cancelamento e a nova ativação, o veículo trafega sem monitoramento</div>
+              </div>
+              <div style="align-self:center;font:400 20px Manrope,sans-serif;color:#B6BFCC;animation:fade .6s both;animation-delay:.5s">→</div>
+              <div style="flex:1 1 190px;min-width:0;padding:20px;border-radius:14px;background:#EAF0F8;animation:riseSm .6s both;animation-delay:.6s">
+                <div style="font:600 12px Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#1E63C8">Nova SMP</div>
+                <div style="margin-top:8px;font:400 13.5px/1.5 Manrope,sans-serif;color:#5B6779">Emissão e ativação após o cancelamento anterior</div>
+              </div>
+            </div>
+            <div style="margin-top:14px;height:6px;border-radius:3px;background:linear-gradient(90deg,#0A1F45 0 30%,#D0342C 34% 62%,#1E63C8 66% 100%);transform-origin:left;animation:grow 1s cubic-bezier(.2,.8,.2,1) both;animation-delay:.7s"></div>
+
+            <div style="margin-top:36px;display:grid;gap:2px;border-top:1px solid rgba(10,31,69,.08)">
+              <div style="padding:22px 0;border-bottom:1px solid rgba(10,31,69,.08);display:grid;grid-template-columns:34px 1fr;gap:18px;animation:riseSm .6s both;animation-delay:.3s">
+                <span style="font:600 12px Manrope,sans-serif;color:#1E63C8;padding-top:3px">01</span>
+                <div><strong style="font:600 16px Sora,sans-serif">O Gatilho do Problema</strong><p style="margin:7px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:#5B6779;max-width:660px">Alterações de rota, devoluções parciais ou mudanças de destino exigem o cancelamento da SMP ativa para a criação de uma nova.</p></div>
+              </div>
+              <div style="padding:22px 0;border-bottom:1px solid rgba(10,31,69,.08);display:grid;grid-template-columns:34px 1fr;gap:18px;animation:riseSm .6s both;animation-delay:.4s">
+                <span style="font:600 12px Manrope,sans-serif;color:#1E63C8;padding-top:3px">02</span>
+                <div><strong style="font:600 16px Sora,sans-serif">O Intervalo Crítico</strong><p style="margin:7px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:#5B6779;max-width:660px">Entre o cancelamento da SMP antiga e a ativação da nova, o veículo trafega sem monitoramento ativo.</p></div>
+              </div>
+              <div style="padding:22px 0;display:grid;grid-template-columns:34px 1fr;gap:18px;animation:riseSm .6s both;animation-delay:.5s">
+                <span style="font:600 12px Manrope,sans-serif;color:#1E63C8;padding-top:3px">03</span>
+                <div><strong style="font:600 16px Sora,sans-serif">Falsa Sensação de Segurança</strong><p style="margin:7px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:#5B6779;max-width:660px">O sistema exibe o processo como “em transição”, mas a carga está fisicamente desprotegida nas rodovias.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid;gap:20px">
+            <div style="padding:34px;border-radius:20px;background:linear-gradient(150deg,#123A7A,#0A1F45);color:#fff;animation:rise .7s both;animation-delay:.2s;transition:transform .3s" style-hover="transform:translateY(-4px)">
+              <div style="font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)">O Peso do Risco</div>
+              <div style="margin-top:18px;font:600 78px/1 Sora,sans-serif;letter-spacing:-.04em">70<span style="font-size:34px;color:#7FB0FF">%</span></div>
+              <div style="margin-top:16px;height:5px;border-radius:3px;background:rgba(255,255,255,.16);overflow:hidden"><div style="height:100%;width:70%;background:#FF6257;transform-origin:left;animation:grow 1.1s cubic-bezier(.2,.8,.2,1) both;animation-delay:.5s"></div></div>
+              <p style="margin:18px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.76)">Cerca de 70% da exposição de risco da Mondelēz concentra-se em corredores críticos com destino à Região Metropolitana do Rio de Janeiro.</p>
+            </div>
+            <div style="border-radius:20px;overflow:hidden;height:210px;border:1px solid rgba(10,31,69,.08);animation:rise .7s both;animation-delay:.3s">
+              <image-slot id="diag-corredor" shape="rect" placeholder="Foto/mapa: corredor RJ"></image-slot>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isT3 }}">
+      <section data-screen-label="03 Paliativo" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
+        <div style="animation:riseSm .6s both">
+          <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8A94A6">A Alternativa Analisada</span>
+          <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:900px">A Proposta de Contorno: Recurso “SMP em Espera”</h2>
+        </div>
+
+        <div style="margin-top:52px;padding:44px 36px;border-radius:20px;background:#fff;border:1px solid rgba(10,31,69,.08);animation:rise .7s both;animation-delay:.1s">
+          <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;row-gap:18px;justify-content:center">
+            <div style="flex:1 1 220px;min-width:0;padding:24px;border-radius:14px;background:#0A1F45;color:#fff;animation:riseSm .6s both;animation-delay:.2s">
+              <div style="font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#7FB0FF">SMP original</div>
+              <div style="margin-top:10px;font:500 17px Sora,sans-serif">Ativa em trânsito</div>
+            </div>
+            <svg width="120" height="24" viewBox="0 0 120 24" style="flex:0 1 60px;min-width:32px;animation:fade .6s both;animation-delay:.35s"><line x1="0" y1="12" x2="120" y2="12" stroke="#B6BFCC" stroke-width="2" stroke-dasharray="8 6" style="animation:dashRun 1.6s linear infinite"></line></svg>
+            <div style="flex:1 1 220px;min-width:0;padding:24px;border-radius:14px;background:#E7EAEF;border:1.5px dashed #9AA5B4;animation:riseSm .6s both;animation-delay:.45s">
+              <div style="font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#6C7688">Bloco temporário</div>
+              <div style="margin-top:10px;font:500 17px Sora,sans-serif;color:#3E4A5C">SMP substituta “em espera”</div>
+            </div>
+            <svg width="120" height="24" viewBox="0 0 120 24" style="flex:0 1 60px;min-width:32px;animation:fade .6s both;animation-delay:.55s"><line x1="0" y1="12" x2="120" y2="12" stroke="#B6BFCC" stroke-width="2" stroke-dasharray="8 6" style="animation:dashRun 1.6s linear infinite"></line></svg>
+            <div style="flex:1 1 220px;min-width:0;padding:24px;border-radius:14px;background:#EAF0F8;border:1px solid rgba(30,99,200,.28);animation:riseSm .6s both;animation-delay:.65s">
+              <div style="font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#1E63C8">Transição teórica</div>
+              <div style="margin-top:10px;font:500 17px Sora,sans-serif;color:#0A1F45">Cancelamento após confirmação</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+          <div style="padding:30px;border-radius:18px;background:#fff;border:1px solid rgba(10,31,69,.08);animation:rise .7s both;animation-delay:.2s;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px rgba(10,31,69,.1)">
+            <div style="font:600 12px Manrope,sans-serif;color:#1E63C8">01</div>
+            <strong style="display:block;margin-top:12px;font:600 17px/1.3 Sora,sans-serif">Funcionamento Proposto</strong>
+            <p style="margin:10px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:#5B6779">O transportador emite uma nova SMP substituta antecipadamente, que fica retida no status “em espera”.</p>
+          </div>
+          <div style="padding:30px;border-radius:18px;background:#fff;border:1px solid rgba(10,31,69,.08);animation:rise .7s both;animation-delay:.3s;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px rgba(10,31,69,.1)">
+            <div style="font:600 12px Manrope,sans-serif;color:#1E63C8">02</div>
+            <strong style="display:block;margin-top:12px;font:600 17px/1.3 Sora,sans-serif">A Transição Teórica</strong>
+            <p style="margin:10px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:#5B6779">A equipe de operação recebe o número da nova SMP e só então cancela a anterior, tecendo uma “rede de segurança”.</p>
+          </div>
+          <div style="padding:30px;border-radius:18px;background:#fff;border:1px solid rgba(10,31,69,.08);animation:rise .7s both;animation-delay:.4s;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px rgba(10,31,69,.1)">
+            <div style="font:600 12px Manrope,sans-serif;color:#1E63C8">03</div>
+            <strong style="display:block;margin-top:12px;font:600 17px/1.3 Sora,sans-serif">Objetivo Inicial</strong>
+            <p style="margin:10px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:#5B6779">Garantir a existência do registro sistêmico antes da derrubada da cobertura atual.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;padding:24px 28px;border-radius:14px;background:rgba(208,52,44,.06);border-left:none;display:flex;align-items:center;gap:18px;animation:riseSm .7s both;animation-delay:.5s">
+          <span style="width:34px;height:34px;flex:none;border-radius:50%;background:#D0342C;color:#fff;display:flex;align-items:center;justify-content:center;font:700 18px Sora,sans-serif">!</span>
+          <span style="font:500 16px/1.5 Manrope,sans-serif;color:#8C2A24">Na teoria, parece funcional. A análise profunda revelou um perigo oculto gravíssimo — <a href="#" onClick="{{ next }}">ver efeito colateral</a>.</span>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isT4 }}">
+      <section data-screen-label="04 Risco oculto" style="position:relative;background:#0A1F45;color:#fff;min-height:calc(100vh - 74px);overflow:hidden">
+        <div style="position:absolute;inset:0;background:radial-gradient(600px 400px at calc(50% + var(--mx,0) * 120px) calc(40% + var(--my,0) * 90px),rgba(208,52,44,.28),rgba(10,31,69,0) 70%);transition:background .3s"></div>
+        <div style="position:relative;max-width:1320px;margin:0 auto;padding:72px 40px 110px">
+          <div style="animation:riseSm .6s both">
+            <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#FF6257">O Efeito Colateral</span>
+            <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:900px">O Perigo Oculto: Efeito Colateral e Risco Invisível</h2>
+          </div>
+
+          <div style="margin-top:48px;padding:40px 36px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);animation:rise .8s both;animation-delay:.15s">
+            <div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:14px;animation:floatY 5s ease-in-out infinite">
+                <svg width="130" height="66" viewBox="0 0 130 66" fill="none"><rect x="2" y="16" width="74" height="32" rx="4" stroke="rgba(255,255,255,.75)" stroke-width="2"></rect><path d="M76 24h24l14 14v10H76z" stroke="rgba(255,255,255,.75)" stroke-width="2"></path><circle cx="26" cy="54" r="8" stroke="rgba(255,255,255,.75)" stroke-width="2"></circle><circle cx="98" cy="54" r="8" stroke="rgba(255,255,255,.75)" stroke-width="2"></circle><line x1="0" y1="64" x2="130" y2="64" stroke="rgba(255,255,255,.25)" stroke-width="2" stroke-dasharray="10 8"></line></svg>
+                <span style="font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6)">Veículo liberado</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+                <svg width="190" height="30" viewBox="0 0 190 30" fill="none"><line x1="0" y1="15" x2="72" y2="15" stroke="#FF6257" stroke-width="2" stroke-dasharray="7 7" style="animation:dashRun 1.4s linear infinite"></line><path d="M84 4l22 22M106 4L84 26" stroke="#FF6257" stroke-width="2.5"></path><line x1="118" y1="15" x2="190" y2="15" stroke="#FF6257" stroke-width="2" stroke-dasharray="7 7" style="animation:dashRun 1.4s linear infinite"></line></svg>
+                <span style="font:700 10.5px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#FF6257">Sinal inexistente</span>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+                <svg width="110" height="66" viewBox="0 0 110 66" fill="none"><path d="M55 62V26" stroke="rgba(255,255,255,.4)" stroke-width="2"></path><path d="M38 62h34" stroke="rgba(255,255,255,.4)" stroke-width="2"></path><circle cx="55" cy="20" r="6" stroke="rgba(255,255,255,.4)" stroke-width="2"></circle><path d="M34 20a21 21 0 0142 0M20 20a35 35 0 01100 0" stroke="rgba(255,255,255,.18)" stroke-width="2"></path></svg>
+                <span style="font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42)">Central de monitoramento</span>
+              </div>
+            </div>
+            <div style="margin:34px auto 0;max-width:520px;padding:16px 22px;border-radius:10px;background:#D0342C;text-align:center;font:700 15px Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;animation:pulseRed 2.6s infinite">Sem proteção ativa</div>
+          </div>
+
+          <div style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px">
+            <div style="padding:28px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);animation:rise .7s both;animation-delay:.2s;transition:background .3s" style-hover="background:rgba(255,255,255,.1)">
+              <strong style="display:block;font:600 17px Sora,sans-serif;color:#7FB0FF">Ativação Global</strong>
+              <p style="margin:10px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.75)">O recurso de “espera” no barramento do sistema é uma regra de caráter global e indisponível para parametrização isolada de forma segura.</p>
+            </div>
+            <div style="padding:28px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);animation:rise .7s both;animation-delay:.28s;transition:background .3s" style-hover="background:rgba(255,255,255,.1)">
+              <strong style="display:block;font:600 17px Sora,sans-serif;color:#7FB0FF">Gargalo de Disciplina das Transportadoras</strong>
+              <p style="margin:10px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.75)">No fluxo diário, as transportadoras de modo geral não mantêm o rigor administrativo de gerenciar status de pendência.</p>
+            </div>
+            <div style="padding:28px;border-radius:16px;background:rgba(208,52,44,.14);border:1px solid rgba(255,98,87,.4);animation:rise .7s both;animation-delay:.36s;transition:background .3s" style-hover="background:rgba(208,52,44,.2)">
+              <strong style="display:block;font:600 17px Sora,sans-serif;color:#FFB4AD">A Falha Humana Crítica</strong>
+              <p style="margin:10px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.82)">O transportador emite a SMP substituta e libera o motorista, acreditando que ele já está protegido.</p>
+            </div>
+            <div style="padding:28px;border-radius:16px;background:rgba(208,52,44,.14);border:1px solid rgba(255,98,87,.4);animation:rise .7s both;animation-delay:.44s;transition:background .3s" style-hover="background:rgba(208,52,44,.2)">
+              <strong style="display:block;font:600 17px Sora,sans-serif;color:#FFB4AD">O Risco Invisível</strong>
+              <p style="margin:10px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.82)">O veículo trafega de fato desassistido, pois a viagem permanece travada “em espera” no sistema da gerenciadora de riscos, sem alertas ativos na tela.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isT5 }}">
+      <section data-screen-label="05 Decisão" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
+        <div style="animation:riseSm .6s both">
+          <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8A94A6">Descarte de Soluções Paliativas</span>
+          <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:940px">Por que “Regras de Exceção” Não São a Solução Definitiva</h2>
+        </div>
+
+        <div style="margin-top:52px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px">
+          <div style="position:relative;padding:36px;border-radius:20px;background:#fff;border:1px solid rgba(208,52,44,.28);animation:rise .7s both;animation-delay:.1s;overflow:hidden">
+            <svg width="150" height="150" viewBox="0 0 100 100" style="position:absolute;right:-14px;bottom:-18px;opacity:.1"><path d="M14 14l72 72M86 14L14 86" stroke="#D0342C" stroke-width="12" stroke-linecap="round"></path></svg>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="padding:6px 12px;border-radius:999px;background:rgba(208,52,44,.1);font:700 10.5px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D0342C">Rejeitado</span>
+            </div>
+            <h3 style="margin:20px 0 0;font:600 24px Sora,sans-serif">Paliativo — Exceção de Espera</h3>
+            <div style="margin-top:24px;display:grid;gap:16px;position:relative">
+              <div><strong style="font:600 15px Sora,sans-serif">A Hipótese de Exceção</strong><p style="margin:6px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:#5B6779">Filtrar e aceitar o status “em espera” apenas para cargas Mondelēz com destino ao Rio de Janeiro.</p></div>
+              <div><strong style="font:600 15px Sora,sans-serif">Inviabilidade Estrutural</strong><p style="margin:6px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:#5B6779">Trata-se de um contorno administrativo complexo que polui as regras de integração de APIs e gera confusão operacional generalizada em outros fluxos logísticos.</p></div>
+            </div>
+          </div>
+
+          <div style="padding:36px;border-radius:20px;background:linear-gradient(150deg,#123A7A,#0A1F45);color:#fff;animation:rise .7s both;animation-delay:.2s">
+            <span style="padding:6px 12px;border-radius:999px;background:rgba(127,176,255,.18);font:700 10.5px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7FB0FF">Direcionamento</span>
+            <h3 style="margin:20px 0 0;font:600 24px Sora,sans-serif">Sistêmico Definitivo</h3>
+            <div style="margin-top:24px;display:grid;gap:16px">
+              <div><strong style="font:600 15px Sora,sans-serif;color:#7FB0FF">Decisão Estratégica</strong><p style="margin:6px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.78)">Rejeitar oficialmente o uso do status de “SMP em Espera”.</p></div>
+              <div><strong style="font:600 15px Sora,sans-serif;color:#7FB0FF">Direcionamento</strong><p style="margin:6px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.78)">O foco deve ser 100% direcionado ao desenvolvimento de soluções sistêmicas automatizadas e robustas.</p></div>
+            </div>
+            <button onClick="{{ next }}" style="margin-top:30px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border:0;border-radius:11px;background:#fff;color:#0A1F45;font:600 14px Manrope,sans-serif;cursor:pointer;transition:transform .25s" style-hover="transform:translateY(-3px)">Ver os pilares técnicos →</button>
+          </div>
+        </div>
+
+        <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(10,31,69,.1);border-radius:16px;overflow:hidden;animation:rise .7s both;animation-delay:.3s">
+          <div style="padding:22px 26px;background:#F7F9FC;font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8A94A6">Critério</div>
+          <div style="padding:22px 26px;background:#F7F9FC;font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D0342C">Paliativo</div>
+          <div style="padding:22px 26px;background:#F7F9FC;font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#1E63C8">Sistêmico</div>
+          <div style="padding:20px 26px;background:#fff;font:500 15px Manrope,sans-serif">Janela sem monitoramento</div>
+          <div style="padding:20px 26px;background:#fff;font:400 15px Manrope,sans-serif;color:#8C2A24">Permanece — e fica invisível</div>
+          <div style="padding:20px 26px;background:#fff;font:400 15px Manrope,sans-serif;color:#1E63C8">Eliminada por sucessão atômica</div>
+          <div style="padding:20px 26px;background:#fff;font:500 15px Manrope,sans-serif">Dependência humana</div>
+          <div style="padding:20px 26px;background:#fff;font:400 15px Manrope,sans-serif;color:#8C2A24">Total — rigor administrativo</div>
+          <div style="padding:20px 26px;background:#fff;font:400 15px Manrope,sans-serif;color:#1E63C8">Zero — validação em código</div>
+          <div style="padding:20px 26px;background:#fff;font:500 15px Manrope,sans-serif">Impacto na integração</div>
+          <div style="padding:20px 26px;background:#fff;font:400 15px Manrope,sans-serif;color:#8C2A24">Polui regras de API</div>
+          <div style="padding:20px 26px;background:#fff;font:400 15px Manrope,sans-serif;color:#1E63C8">Padrão único para todos os fluxos</div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isT6 }}">
+      <section data-screen-label="06 Solução" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
+        <div style="animation:riseSm .6s both">
+          <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#1E63C8">A Reivindicação</span>
+          <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:940px">O Alvo Técnico: Pilares da Solução Definitiva (Apisul)</h2>
+        </div>
+
+        <div style="margin-top:52px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px">
+          <div style="position:relative;padding:40px 36px;border-radius:22px;background:#fff;border:1px solid rgba(10,31,69,.08);overflow:hidden;animation:rise .8s both;animation-delay:.1s;transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 24px 50px rgba(10,31,69,.14)">
+            <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#1E63C8;transform-origin:left;animation:grow .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:.3s"></div>
+            <div style="display:flex;align-items:center;gap:16px">
+              <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><rect x="3" y="3" width="40" height="40" rx="11" stroke="#1E63C8" stroke-width="2"></rect><path d="M13 23h7l3-6 4 12 3-6h4" stroke="#1E63C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+              <span style="font:700 11px Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#1E63C8">Pilar 1</span>
+            </div>
+            <h3 style="margin:22px 0 0;font:600 26px/1.2 Sora,sans-serif;letter-spacing:-.02em">Alterações Dinâmicas Estruturadas <span style="color:#8A94A6">(Sem Cancelamento)</span></h3>
+            <div style="margin-top:24px;display:grid;gap:14px">
+              <div style="display:grid;grid-template-columns:20px 1fr;gap:14px"><span style="margin-top:8px;width:8px;height:8px;border-radius:50%;background:#1E63C8"></span><p style="margin:0;font:400 16px/1.6 Manrope,sans-serif;color:#3E4A5C">Permissão para modificar parâmetros (pontos adicionais, paradas, devoluções) diretamente na SMP original ativa.</p></div>
+              <div style="display:grid;grid-template-columns:20px 1fr;gap:14px"><span style="margin-top:8px;width:8px;height:8px;border-radius:50%;background:#1E63C8"></span><p style="margin:0;font:400 16px/1.6 Manrope,sans-serif;color:#3E4A5C">Processamento em tempo real via integração sistêmica de APIs.</p></div>
+            </div>
+            <div style="margin-top:28px;padding:14px 18px;border-radius:11px;background:#EAF0F8;font:600 13px Manrope,sans-serif;color:#1E63C8">API de Integração em Tempo Real</div>
+          </div>
+
+          <div style="position:relative;padding:40px 36px;border-radius:22px;background:linear-gradient(155deg,#123A7A,#0A1F45);color:#fff;overflow:hidden;animation:rise .8s both;animation-delay:.2s;transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 24px 50px rgba(10,31,69,.3)">
+            <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#7FB0FF;transform-origin:left;animation:grow .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:.4s"></div>
+            <div style="display:flex;align-items:center;gap:16px">
+              <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><rect x="3" y="3" width="40" height="40" rx="11" stroke="#7FB0FF" stroke-width="2"></rect><path d="M14 18h10l-4-4M32 28H22l4 4" stroke="#7FB0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 18a8 8 0 018-8M32 28a8 8 0 01-8 8" stroke="#7FB0FF" stroke-width="2" stroke-linecap="round"></path></svg>
+              <span style="font:700 11px Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7FB0FF">Pilar 2</span>
+            </div>
+            <h3 style="margin:22px 0 0;font:600 26px/1.2 Sora,sans-serif;letter-spacing:-.02em">Sucessão Atômica e Automatizada de Cobertura</h3>
+            <div style="margin-top:24px;display:grid;gap:14px">
+              <div style="display:grid;grid-template-columns:20px 1fr;gap:14px"><span style="margin-top:8px;width:8px;height:8px;border-radius:50%;background:#7FB0FF"></span><p style="margin:0;font:400 16px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.8)">Caso o cancelamento e recriação sejam obrigatórios (questões fiscais), a transição deve ser imediata e sistêmica.</p></div>
+              <div style="display:grid;grid-template-columns:20px 1fr;gap:14px"><span style="margin-top:8px;width:8px;height:8px;border-radius:50%;background:#7FB0FF"></span><p style="margin:0;font:400 16px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.8)">O sistema só homologa o cancelamento da SMP original no milissegundo em que a nova SMP substituta for validada e ativada online.</p></div>
+            </div>
+            <div style="margin-top:28px;padding:14px 18px;border-radius:11px;background:rgba(127,176,255,.14);font:600 13px Manrope,sans-serif;color:#7FB0FF">Troca de Bastão Sistêmica Automatizada — Zero Janela Cega</div>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;padding:30px 36px;border-radius:18px;background:#fff;border:1px solid rgba(10,31,69,.08);display:flex;align-items:center;gap:28px;flex-wrap:wrap;animation:rise .7s both;animation-delay:.35s">
+          <div style="font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8A94A6;flex:none">Meta operacional</div>
+          <div style="flex:1;min-width:240px;height:8px;border-radius:4px;background:#E7EAEF;overflow:hidden"><div style="height:100%;width:100%;background:linear-gradient(90deg,#1E63C8,#0A1F45);transform-origin:left;animation:grow 1.2s cubic-bezier(.2,.8,.2,1) both;animation-delay:.5s"></div></div>
+          <div style="font:600 22px Sora,sans-serif;letter-spacing:-.02em;flex:none">0 ms de janela cega</div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isT7 }}">
+      <section data-screen-label="07 Encaminhamentos" style="max-width:1320px;margin:0 auto;padding:72px 40px 130px">
+        <div style="animation:riseSm .6s both">
+          <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#1E63C8">Diretrizes de Implementação</span>
+          <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:900px">Próximos Passos e Cronograma de Trabalho</h2>
+        </div>
+
+        <div style="margin-top:56px;display:grid;gap:0">
+          <div style="display:grid;grid-template-columns:150px 1fr;gap:36px;padding:32px 0;border-top:1px solid rgba(10,31,69,.12);animation:rise .7s both;animation-delay:.1s">
+            <div>
+              <div style="font:600 44px/1 Sora,sans-serif;color:#1E63C8;letter-spacing:-.03em">10</div>
+              <div style="margin-top:6px;font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8A94A6">dias úteis</div>
+            </div>
+            <div>
+              <h3 style="margin:0;font:600 24px Sora,sans-serif">Mesa Técnica de Integração</h3>
+              <p style="margin:12px 0 0;max-width:820px;font:400 17px/1.65 Manrope,sans-serif;color:#5B6779">Realização de workshop técnico conjunto entre Mondelēz e a equipe de TI/Sistemas da Apisul no prazo de 10 dias úteis para redesenhar as APIs.</p>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:150px 1fr;gap:36px;padding:32px 0;border-top:1px solid rgba(10,31,69,.12);animation:rise .7s both;animation-delay:.2s">
+            <div>
+              <div style="font:600 44px/1 Sora,sans-serif;color:#1E63C8;letter-spacing:-.03em">RJ</div>
+              <div style="margin-top:6px;font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8A94A6">rota piloto</div>
+            </div>
+            <div>
+              <h3 style="margin:0;font:600 24px Sora,sans-serif">Piloto Prioritário no Rio de Janeiro</h3>
+              <p style="margin:12px 0 0;max-width:820px;font:400 17px/1.65 Manrope,sans-serif;color:#5B6779">A primeira implementação de alteração dinâmica ou sucessão atômica de SMPs será implantada e testada na rota com destino ao RJ.</p>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:150px 1fr;gap:36px;padding:32px 0;border-top:1px solid rgba(10,31,69,.12);border-bottom:1px solid rgba(10,31,69,.12);animation:rise .7s both;animation-delay:.3s">
+            <div>
+              <div style="font:600 44px/1 Sora,sans-serif;color:#1E63C8;letter-spacing:-.03em">0</div>
+              <div style="margin-top:6px;font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8A94A6">decisão manual</div>
+            </div>
+            <div>
+              <h3 style="margin:0;font:600 24px Sora,sans-serif">Eliminação do Fator Humano</h3>
+              <p style="margin:12px 0 0;max-width:820px;font:400 17px/1.65 Manrope,sans-serif;color:#5B6779">Substituição do controle manual e da memória de operadores por regras de validação duras e automatizadas diretamente no código do sistema.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:48px;padding:44px;border-radius:22px;background:linear-gradient(150deg,#0A1F45,#123A7A);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;animation:rise .8s both;animation-delay:.4s">
+          <div>
+            <div style="font:600 11px Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7FB0FF">Compromisso conjunto</div>
+            <div style="margin-top:14px;font:600 clamp(22px,2.4vw,32px)/1.2 Sora,sans-serif;letter-spacing:-.02em;max-width:720px">Proteção contínua: nenhuma carga em trânsito sem cobertura sistêmica ativa.</div>
+          </div>
+          <button onClick="{{ goStart }}" style="padding:16px 26px;border:1px solid rgba(255,255,255,.34);border-radius:12px;background:transparent;color:#fff;font:600 15px Manrope,sans-serif;cursor:pointer;transition:background .25s" style-hover="background:rgba(255,255,255,.12)">Voltar ao início</button>
+        </div>
+      </section>
+    </sc-if>
+
+  </main>
+
+  <div style="position:fixed;right:26px;bottom:26px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px">
+    <sc-if value="{{ notesOpen }}">
+      <div style="width:min(420px,calc(100vw - 60px));padding:24px 26px;border-radius:16px;background:#0A1F45;color:#fff;box-shadow:0 26px 60px rgba(5,17,40,.4);animation:riseSm .4s both">
+        <div style="font:600 10.5px Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7FB0FF">Notas do apresentador</div>
+        <p style="margin:12px 0 0;font:400 14.5px/1.65 Manrope,sans-serif;color:rgba(255,255,255,.82)">{{ note }}</p>
+      </div>
+    </sc-if>
+    <div style="display:flex;gap:10px;align-items:center">
+      <button onClick="{{ prev }}" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(10,31,69,.14);background:#fff;color:#0A1F45;font-size:16px;cursor:pointer;box-shadow:0 6px 18px rgba(10,31,69,.1);transition:transform .2s" style-hover="transform:translateY(-2px)">←</button>
+      <button onClick="{{ next }}" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(10,31,69,.14);background:#fff;color:#0A1F45;font-size:16px;cursor:pointer;box-shadow:0 6px 18px rgba(10,31,69,.1);transition:transform .2s" style-hover="transform:translateY(-2px)">→</button>
+      <button onClick="{{ toggleNotes }}" style="height:44px;padding:0 20px;border-radius:22px;border:0;background:#0A1F45;color:#fff;font:600 13px Manrope,sans-serif;cursor:pointer;box-shadow:0 10px 26px rgba(10,31,69,.22);transition:transform .2s" style-hover="transform:translateY(-2px)">Notas</button>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const TABS = [
+  { num: "01", label: "Capa", note: "Abertura: parceria Mondelēz & Apisul, foco em eliminar o risco de cancelamento de SMP." },
+  { num: "02", label: "Diagnóstico", note: "Atualmente, o fluxo operacional nos obriga a apagar a luz de monitoramento para poder acender outra. Esse hiato de tempo (\"cegueira operacional\") é inaceitável em rotas críticas como o Rio de Janeiro. Precisamos de proteção contínua." },
+  { num: "03", label: "SMP em Espera", note: "Diante disso, transportadores sugeriram utilizar o recurso de \"SMP em Espera\" oferecido sistemicamente. Na teoria, parece funcional: registramos a nova viagem antes de cancelar a antiga. Mas a análise profunda revelou um perigo oculto gravíssimo." },
+  { num: "04", label: "Risco Oculto", note: "Se ativarmos este recurso, criaremos um risco pior do que o atual. As transportadoras emitirão a SMP em espera e liberarão o caminhão achando que está tudo certo. O veículo rodará cego, mas sem que a nossa central saiba, pois o sistema não gerará alertas para uma SMP que ainda não iniciou de fato." },
+  { num: "05", label: "Decisão", note: "Poderíamos parametrizar para que apenas o Rio de Janeiro aceitasse o modo \"em espera\", mas isso seria apenas colocar um curativo em um problema estrutural. O que precisamos é exigir que a tecnologia evolua para um nível profissional definitivo." },
+  { num: "06", label: "Solução Sistêmica", note: "A nossa demanda técnica junto à Apisul está dividida em duas frentes: primeiro, poder alterar a rota da SMP em trânsito sem ter que cancelá-la. Segundo, se o cancelamento for obrigatório, o próprio sistema da Apisul deve garantir a troca de bastão automatizada no mesmo milissegundo, reduzindo a zero a dependência humana." },
+  { num: "07", label: "Encaminhamentos", note: "O plano de ação é claro: em até 10 dias úteis faremos a mesa técnica para desenhar a solução de API com a equipe de TI da Apisul. O piloto será rodado na nossa rota mais sensível, que é o Rio de Janeiro, garantindo que o operador e o transportador não precisem tomar decisões manuais críticas de segurança." }
+];
+
+class Component extends DCLogic {
+  state = { i: 0, notesOpen: false };
+
+  componentDidMount() {
+    this._root = this.refs && this.refs.root;
+    this._move = (e) => {
+      const el = this._el;
+      if (!el) return;
+      el.style.setProperty("--mx", ((e.clientX / window.innerWidth) - 0.5).toFixed(3));
+      el.style.setProperty("--my", ((e.clientY / window.innerHeight) - 0.5).toFixed(3));
+    };
+    this._key = (e) => {
+      if (e.key === "ArrowRight" || e.key === "PageDown") this.go(this.state.i + 1);
+      if (e.key === "ArrowLeft" || e.key === "PageUp") this.go(this.state.i - 1);
+      if (e.key === "n" || e.key === "N") this.setState(s => ({ notesOpen: !s.notesOpen }));
+    };
+    window.addEventListener("pointermove", this._move);
+    window.addEventListener("keydown", this._key);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("pointermove", this._move);
+    window.removeEventListener("keydown", this._key);
+  }
+
+  go(n) {
+    const i = Math.max(0, Math.min(TABS.length - 1, n));
+    if (i === this.state.i) return;
+    this.setState({ i });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  renderVals() {
+    const i = this.state.i;
+    const tabs = TABS.map((t, k) => ({
+      num: t.num,
+      label: t.label,
+      go: () => this.go(k),
+      btnStyle: {
+        display: "flex", alignItems: "center", gap: "7px", padding: "9px 14px", border: 0,
+        borderRadius: "9px", cursor: "pointer", fontFamily: "Manrope, sans-serif",
+        fontSize: "13.5px", fontWeight: 600, letterSpacing: "-.005em",
+        background: k === i ? "#0A1F45" : "transparent",
+        color: k === i ? "#fff" : "#5B6779",
+        transition: "background .25s, color .25s, transform .25s"
+      }
+    }));
+    return {
+      tabs,
+      rootRef: (el) => { this._el = el; },
+      progressStyle: {
+        height: "100%",
+        width: ((i + 1) / TABS.length * 100) + "%",
+        background: i === 3 ? "#D0342C" : "#1E63C8",
+        transition: "width .5s cubic-bezier(.2,.8,.2,1), background .4s"
+      },
+      isT1: i === 0, isT2: i === 1, isT3: i === 2, isT4: i === 3,
+      isT5: i === 4, isT6: i === 5, isT7: i === 6,
+      note: TABS[i].note,
+      notesOpen: this.state.notesOpen,
+      toggleNotes: () => this.setState(s => ({ notesOpen: !s.notesOpen })),
+      next: () => this.go(i + 1),
+      prev: () => this.go(i - 1),
+      goSolution: () => this.go(5),
+      goStart: () => this.go(0)
+    };
+  }
+}
+
+</script>
+</body>
+</html>
