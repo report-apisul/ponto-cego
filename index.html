@@ -27,6 +27,44 @@ a:hover{color:#0A1F45}
 @keyframes dashRun{to{stroke-dashoffset:-40}}
 @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+
+@media (max-width:760px){
+  /* Cabeçalho */
+  header > div{padding:12px 16px !important;gap:12px !important;flex-wrap:wrap !important}
+  header nav{margin-left:0 !important;width:100% !important;flex-wrap:nowrap !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;padding-bottom:2px;scrollbar-width:none}
+  header nav::-webkit-scrollbar{display:none}
+  header nav button{flex:0 0 auto !important}
+
+  .m-sec{padding-left:18px !important;padding-right:18px !important;padding-top:44px !important;padding-bottom:88px !important;min-height:auto !important}
+  .m-hero{padding:52px 18px !important;grid-template-columns:minmax(0,1fr) !important;gap:30px !important;min-height:auto !important}
+  .m-hero>*{min-width:0 !important}
+  .m-hero h1{font-size:clamp(26px,7.4vw,34px) !important;overflow-wrap:break-word}
+  .m-hero p{font-size:16px !important}
+  .m-hero button{flex:1 1 100% !important;justify-content:center}
+  .m-shot{height:190px !important}
+
+  .m-split{grid-template-columns:minmax(0,1fr) !important;gap:22px !important}
+  .m-split>*{min-width:0 !important}
+  .m-cards{grid-template-columns:minmax(0,1fr) !important}
+  .m-cards>*{min-width:0 !important}
+  .m-pad{padding:24px 18px !important}
+  .m-tl{grid-template-columns:52px minmax(0,1fr) !important;gap:14px !important}
+  .m-num-lg{font-size:50px !important}
+  .m-num-md{font-size:32px !important}
+  .m-sec h2{font-size:clamp(23px,5.9vw,31px) !important}
+  .m-sec h3{font-size:20px !important}
+
+  .m-bl{position:static !important;transform:none !important;margin-top:18px !important}
+  .m-btr{position:static !important;display:inline-block;transform:none !important;margin-bottom:14px !important}
+
+  .m-cmp{grid-template-columns:minmax(0,1fr) !important}
+  .m-cmp>div:nth-child(-n+3){display:none !important}
+  .m-cmp>div:nth-child(3n+1){background:#0A1F45 !important;color:#fff !important;font-weight:600 !important}
+  .m-cmp>div:nth-child(3n+2){border-left:3px solid #D0342C}
+  .m-cmp>div:nth-child(3n){border-left:3px solid #1E63C8}
+
+  .m-fab{right:12px !important;bottom:12px !important;gap:8px !important}
+}
 </style>
 </helmet>
 
@@ -64,7 +102,7 @@ a:hover{color:#0A1F45}
         <div style="position:absolute;top:-140px;right:-80px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(58,124,220,.55),rgba(10,31,69,0) 65%);transform:translate(calc(var(--mx,0) * 26px),calc(var(--my,0) * 26px));transition:transform .5s cubic-bezier(.2,.8,.2,1)"></div>
         <div style="position:absolute;bottom:-180px;left:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(208,52,44,.34),rgba(10,31,69,0) 62%);transform:translate(calc(var(--mx,0) * -20px),calc(var(--my,0) * -20px));transition:transform .6s cubic-bezier(.2,.8,.2,1)"></div>
 
-        <div style="position:relative;max-width:1320px;margin:0 auto;padding:96px 40px;width:100%;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:center">
+        <div class="m-hero" style="position:relative;max-width:1320px;margin:0 auto;padding:96px 40px;width:100%;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:64px;align-items:center">
           <div>
             <div style="display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;background:rgba(208,52,44,.14);border:1px solid rgba(208,52,44,.45);animation:riseSm .6s both">
               <span style="width:8px;height:8px;border-radius:50%;background:#FF6257;animation:blink 1.6s infinite"></span>
@@ -93,27 +131,27 @@ a:hover{color:#0A1F45}
           </div>
 
           <div style="position:relative;animation:rise 1s both;animation-delay:.35s">
-            <div style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.18);height:340px;background:rgba(255,255,255,.05)">
+            <div class="m-shot" style="position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.18);height:340px;background:rgba(255,255,255,.05)">
               <image-slot id="capa-frota" shape="rect" placeholder="Foto: carreta / corredor logístico"></image-slot>
             </div>
-            <div style="position:absolute;left:-28px;bottom:-30px;padding:22px 26px;border-radius:16px;background:#fff;box-shadow:0 22px 48px rgba(5,17,40,.34);transform:translate(calc(var(--mx,0) * -14px),calc(var(--my,0) * -14px));transition:transform .5s cubic-bezier(.2,.8,.2,1)">
+            <div class="m-bl" style="position:absolute;left:-28px;bottom:-30px;padding:22px 26px;border-radius:16px;background:#fff;box-shadow:0 22px 48px rgba(5,17,40,.34);transform:translate(calc(var(--mx,0) * -14px),calc(var(--my,0) * -14px));transition:transform .5s cubic-bezier(.2,.8,.2,1)">
               <div style="font:600 40px/1 Sora,sans-serif;color:#0A1F45;letter-spacing:-.03em">70<span style="font-size:22px;color:#1E63C8">%</span></div>
               <div style="margin-top:8px;max-width:170px;font:500 12px/1.45 Manrope,sans-serif;color:#5B6779">da exposição de risco em corredores com destino ao Rio de Janeiro</div>
             </div>
-            <div style="position:absolute;right:-18px;top:-22px;padding:12px 16px;border-radius:12px;background:#D0342C;color:#fff;font:600 11.5px Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;animation:pulseRed 2.4s infinite">Janela cega ativa</div>
+            <div class="m-btr" style="position:absolute;right:-18px;top:-22px;padding:12px 16px;border-radius:12px;background:#D0342C;color:#fff;font:600 11.5px Manrope,sans-serif;letter-spacing:.1em;text-transform:uppercase;animation:pulseRed 2.4s infinite">Janela cega ativa</div>
           </div>
         </div>
       </section>
     </sc-if>
 
     <sc-if value="{{ isT2 }}">
-      <section data-screen-label="02 Diagnóstico" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
+      <section data-screen-label="02 Diagnóstico" class="m-sec" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
         <div style="animation:riseSm .6s both">
           <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#1E63C8">O Diagnóstico</span>
           <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:900px;text-wrap:balance">A Vulnerabilidade Atual: O Fenômeno da “Cegueira Operacional”</h2>
         </div>
 
-        <div style="margin-top:52px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:32px;align-items:start">
+        <div class="m-split" style="margin-top:52px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:32px;align-items:start">
           <div style="padding:36px;border-radius:20px;background:#fff;border:1px solid rgba(10,31,69,.08);box-shadow:0 1px 3px rgba(10,31,69,.06);animation:rise .7s both;animation-delay:.1s">
             <div style="font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8A94A6">Fluxo atual de cancelamento</div>
             <div style="margin-top:28px;display:flex;align-items:stretch;gap:14px;flex-wrap:wrap">
@@ -156,7 +194,7 @@ a:hover{color:#0A1F45}
           <div style="display:grid;gap:20px">
             <div style="padding:34px;border-radius:20px;background:linear-gradient(150deg,#123A7A,#0A1F45);color:#fff;animation:rise .7s both;animation-delay:.2s;transition:transform .3s" style-hover="transform:translateY(-4px)">
               <div style="font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)">O Peso do Risco</div>
-              <div style="margin-top:18px;font:600 78px/1 Sora,sans-serif;letter-spacing:-.04em">70<span style="font-size:34px;color:#7FB0FF">%</span></div>
+              <div class="m-num-lg" style="margin-top:18px;font:600 78px/1 Sora,sans-serif;letter-spacing:-.04em">70<span style="font-size:34px;color:#7FB0FF">%</span></div>
               <div style="margin-top:16px;height:5px;border-radius:3px;background:rgba(255,255,255,.16);overflow:hidden"><div style="height:100%;width:70%;background:#FF6257;transform-origin:left;animation:grow 1.1s cubic-bezier(.2,.8,.2,1) both;animation-delay:.5s"></div></div>
               <p style="margin:18px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.76)">Cerca de 70% da exposição de risco da Mondelēz concentra-se em corredores críticos com destino à Região Metropolitana do Rio de Janeiro.</p>
             </div>
@@ -169,13 +207,13 @@ a:hover{color:#0A1F45}
     </sc-if>
 
     <sc-if value="{{ isT3 }}">
-      <section data-screen-label="03 Paliativo" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
+      <section data-screen-label="03 Paliativo" class="m-sec" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
         <div style="animation:riseSm .6s both">
           <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8A94A6">A Alternativa Analisada</span>
           <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:900px">A Proposta de Contorno: Recurso “SMP em Espera”</h2>
         </div>
 
-        <div style="margin-top:52px;padding:44px 36px;border-radius:20px;background:#fff;border:1px solid rgba(10,31,69,.08);animation:rise .7s both;animation-delay:.1s">
+        <div class="m-pad" style="margin-top:52px;padding:44px 36px;border-radius:20px;background:#fff;border:1px solid rgba(10,31,69,.08);animation:rise .7s both;animation-delay:.1s">
           <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;row-gap:18px;justify-content:center">
             <div style="flex:1 1 220px;min-width:0;padding:24px;border-radius:14px;background:#0A1F45;color:#fff;animation:riseSm .6s both;animation-delay:.2s">
               <div style="font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#7FB0FF">SMP original</div>
@@ -194,7 +232,7 @@ a:hover{color:#0A1F45}
           </div>
         </div>
 
-        <div style="margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
+        <div class="m-cards" style="margin-top:32px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px">
           <div style="padding:30px;border-radius:18px;background:#fff;border:1px solid rgba(10,31,69,.08);animation:rise .7s both;animation-delay:.2s;transition:transform .3s,box-shadow .3s" style-hover="transform:translateY(-5px);box-shadow:0 18px 38px rgba(10,31,69,.1)">
             <div style="font:600 12px Manrope,sans-serif;color:#1E63C8">01</div>
             <strong style="display:block;margin-top:12px;font:600 17px/1.3 Sora,sans-serif">Funcionamento Proposto</strong>
@@ -222,13 +260,13 @@ a:hover{color:#0A1F45}
     <sc-if value="{{ isT4 }}">
       <section data-screen-label="04 Risco oculto" style="position:relative;background:#0A1F45;color:#fff;min-height:calc(100vh - 74px);overflow:hidden">
         <div style="position:absolute;inset:0;background:radial-gradient(600px 400px at calc(50% + var(--mx,0) * 120px) calc(40% + var(--my,0) * 90px),rgba(208,52,44,.28),rgba(10,31,69,0) 70%);transition:background .3s"></div>
-        <div style="position:relative;max-width:1320px;margin:0 auto;padding:72px 40px 110px">
+        <div class="m-sec" style="position:relative;max-width:1320px;margin:0 auto;padding:72px 40px 110px">
           <div style="animation:riseSm .6s both">
             <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#FF6257">O Efeito Colateral</span>
             <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:900px">O Perigo Oculto: Efeito Colateral e Risco Invisível</h2>
           </div>
 
-          <div style="margin-top:48px;padding:40px 36px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);animation:rise .8s both;animation-delay:.15s">
+          <div class="m-pad" style="margin-top:48px;padding:40px 36px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);animation:rise .8s both;animation-delay:.15s">
             <div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap">
               <div style="display:flex;flex-direction:column;align-items:center;gap:14px;animation:floatY 5s ease-in-out infinite">
                 <svg width="130" height="66" viewBox="0 0 130 66" fill="none"><rect x="2" y="16" width="74" height="32" rx="4" stroke="rgba(255,255,255,.75)" stroke-width="2"></rect><path d="M76 24h24l14 14v10H76z" stroke="rgba(255,255,255,.75)" stroke-width="2"></path><circle cx="26" cy="54" r="8" stroke="rgba(255,255,255,.75)" stroke-width="2"></circle><circle cx="98" cy="54" r="8" stroke="rgba(255,255,255,.75)" stroke-width="2"></circle><line x1="0" y1="64" x2="130" y2="64" stroke="rgba(255,255,255,.25)" stroke-width="2" stroke-dasharray="10 8"></line></svg>
@@ -246,7 +284,7 @@ a:hover{color:#0A1F45}
             <div style="margin:34px auto 0;max-width:520px;padding:16px 22px;border-radius:10px;background:#D0342C;text-align:center;font:700 15px Manrope,sans-serif;letter-spacing:.2em;text-transform:uppercase;animation:pulseRed 2.6s infinite">Sem proteção ativa</div>
           </div>
 
-          <div style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px">
+          <div class="m-cards" style="margin-top:32px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px">
             <div style="padding:28px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);animation:rise .7s both;animation-delay:.2s;transition:background .3s" style-hover="background:rgba(255,255,255,.1)">
               <strong style="display:block;font:600 17px Sora,sans-serif;color:#7FB0FF">Ativação Global</strong>
               <p style="margin:10px 0 0;font:400 15px/1.6 Manrope,sans-serif;color:rgba(255,255,255,.75)">O recurso de “espera” no barramento do sistema é uma regra de caráter global e indisponível para parametrização isolada de forma segura.</p>
@@ -269,14 +307,14 @@ a:hover{color:#0A1F45}
     </sc-if>
 
     <sc-if value="{{ isT5 }}">
-      <section data-screen-label="05 Decisão" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
+      <section data-screen-label="05 Decisão" class="m-sec" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
         <div style="animation:riseSm .6s both">
           <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#8A94A6">Descarte de Soluções Paliativas</span>
           <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:940px">Por que “Regras de Exceção” Não São a Solução Definitiva</h2>
         </div>
 
-        <div style="margin-top:52px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px">
-          <div style="position:relative;padding:36px;border-radius:20px;background:#fff;border:1px solid rgba(208,52,44,.28);animation:rise .7s both;animation-delay:.1s;overflow:hidden">
+        <div class="m-cards" style="margin-top:52px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px">
+          <div class="m-pad" style="position:relative;padding:36px;border-radius:20px;background:#fff;border:1px solid rgba(208,52,44,.28);animation:rise .7s both;animation-delay:.1s;overflow:hidden">
             <svg width="150" height="150" viewBox="0 0 100 100" style="position:absolute;right:-14px;bottom:-18px;opacity:.1"><path d="M14 14l72 72M86 14L14 86" stroke="#D0342C" stroke-width="12" stroke-linecap="round"></path></svg>
             <div style="display:flex;align-items:center;gap:12px">
               <span style="padding:6px 12px;border-radius:999px;background:rgba(208,52,44,.1);font:700 10.5px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D0342C">Rejeitado</span>
@@ -288,7 +326,7 @@ a:hover{color:#0A1F45}
             </div>
           </div>
 
-          <div style="padding:36px;border-radius:20px;background:linear-gradient(150deg,#123A7A,#0A1F45);color:#fff;animation:rise .7s both;animation-delay:.2s">
+          <div class="m-pad" style="padding:36px;border-radius:20px;background:linear-gradient(150deg,#123A7A,#0A1F45);color:#fff;animation:rise .7s both;animation-delay:.2s">
             <span style="padding:6px 12px;border-radius:999px;background:rgba(127,176,255,.18);font:700 10.5px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#7FB0FF">Direcionamento</span>
             <h3 style="margin:20px 0 0;font:600 24px Sora,sans-serif">Sistêmico Definitivo</h3>
             <div style="margin-top:24px;display:grid;gap:16px">
@@ -299,7 +337,7 @@ a:hover{color:#0A1F45}
           </div>
         </div>
 
-        <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(10,31,69,.1);border-radius:16px;overflow:hidden;animation:rise .7s both;animation-delay:.3s">
+        <div class="m-cmp" style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(10,31,69,.1);border-radius:16px;overflow:hidden;animation:rise .7s both;animation-delay:.3s">
           <div style="padding:22px 26px;background:#F7F9FC;font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8A94A6">Critério</div>
           <div style="padding:22px 26px;background:#F7F9FC;font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#D0342C">Paliativo</div>
           <div style="padding:22px 26px;background:#F7F9FC;font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#1E63C8">Sistêmico</div>
@@ -317,14 +355,14 @@ a:hover{color:#0A1F45}
     </sc-if>
 
     <sc-if value="{{ isT6 }}">
-      <section data-screen-label="06 Solução" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
+      <section data-screen-label="06 Solução" class="m-sec" style="max-width:1320px;margin:0 auto;padding:72px 40px 110px">
         <div style="animation:riseSm .6s both">
           <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#1E63C8">A Reivindicação</span>
           <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:940px">O Alvo Técnico: Pilares da Solução Definitiva (Apisul)</h2>
         </div>
 
-        <div style="margin-top:52px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px">
-          <div style="position:relative;padding:40px 36px;border-radius:22px;background:#fff;border:1px solid rgba(10,31,69,.08);overflow:hidden;animation:rise .8s both;animation-delay:.1s;transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 24px 50px rgba(10,31,69,.14)">
+        <div class="m-cards" style="margin-top:52px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px">
+          <div class="m-pad" style="position:relative;padding:40px 36px;border-radius:22px;background:#fff;border:1px solid rgba(10,31,69,.08);overflow:hidden;animation:rise .8s both;animation-delay:.1s;transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 24px 50px rgba(10,31,69,.14)">
             <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#1E63C8;transform-origin:left;animation:grow .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:.3s"></div>
             <div style="display:flex;align-items:center;gap:16px">
               <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><rect x="3" y="3" width="40" height="40" rx="11" stroke="#1E63C8" stroke-width="2"></rect><path d="M13 23h7l3-6 4 12 3-6h4" stroke="#1E63C8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -338,7 +376,7 @@ a:hover{color:#0A1F45}
             <div style="margin-top:28px;padding:14px 18px;border-radius:11px;background:#EAF0F8;font:600 13px Manrope,sans-serif;color:#1E63C8">API de Integração em Tempo Real</div>
           </div>
 
-          <div style="position:relative;padding:40px 36px;border-radius:22px;background:linear-gradient(155deg,#123A7A,#0A1F45);color:#fff;overflow:hidden;animation:rise .8s both;animation-delay:.2s;transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 24px 50px rgba(10,31,69,.3)">
+          <div class="m-pad" style="position:relative;padding:40px 36px;border-radius:22px;background:linear-gradient(155deg,#123A7A,#0A1F45);color:#fff;overflow:hidden;animation:rise .8s both;animation-delay:.2s;transition:transform .35s,box-shadow .35s" style-hover="transform:translateY(-6px);box-shadow:0 24px 50px rgba(10,31,69,.3)">
             <div style="position:absolute;top:0;left:0;right:0;height:4px;background:#7FB0FF;transform-origin:left;animation:grow .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:.4s"></div>
             <div style="display:flex;align-items:center;gap:16px">
               <svg width="46" height="46" viewBox="0 0 46 46" fill="none"><rect x="3" y="3" width="40" height="40" rx="11" stroke="#7FB0FF" stroke-width="2"></rect><path d="M14 18h10l-4-4M32 28H22l4 4" stroke="#7FB0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M14 18a8 8 0 018-8M32 28a8 8 0 01-8 8" stroke="#7FB0FF" stroke-width="2" stroke-linecap="round"></path></svg>
@@ -353,7 +391,7 @@ a:hover{color:#0A1F45}
           </div>
         </div>
 
-        <div style="margin-top:24px;padding:30px 36px;border-radius:18px;background:#fff;border:1px solid rgba(10,31,69,.08);display:flex;align-items:center;gap:28px;flex-wrap:wrap;animation:rise .7s both;animation-delay:.35s">
+        <div class="m-pad" style="margin-top:24px;padding:30px 36px;border-radius:18px;background:#fff;border:1px solid rgba(10,31,69,.08);display:flex;align-items:center;gap:28px;flex-wrap:wrap;animation:rise .7s both;animation-delay:.35s">
           <div style="font:600 11px Manrope,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8A94A6;flex:none">Meta operacional</div>
           <div style="flex:1;min-width:240px;height:8px;border-radius:4px;background:#E7EAEF;overflow:hidden"><div style="height:100%;width:100%;background:linear-gradient(90deg,#1E63C8,#0A1F45);transform-origin:left;animation:grow 1.2s cubic-bezier(.2,.8,.2,1) both;animation-delay:.5s"></div></div>
           <div style="font:600 22px Sora,sans-serif;letter-spacing:-.02em;flex:none">0 ms de janela cega</div>
@@ -362,16 +400,16 @@ a:hover{color:#0A1F45}
     </sc-if>
 
     <sc-if value="{{ isT7 }}">
-      <section data-screen-label="07 Encaminhamentos" style="max-width:1320px;margin:0 auto;padding:72px 40px 130px">
+      <section data-screen-label="07 Encaminhamentos" class="m-sec" style="max-width:1320px;margin:0 auto;padding:72px 40px 130px">
         <div style="animation:riseSm .6s both">
           <span style="font:600 11px Manrope,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#1E63C8">Diretrizes de Implementação</span>
           <h2 style="margin:14px 0 0;font:600 clamp(30px,3.2vw,46px)/1.1 Sora,sans-serif;letter-spacing:-.025em;max-width:900px">Próximos Passos e Cronograma de Trabalho</h2>
         </div>
 
         <div style="margin-top:56px;display:grid;gap:0">
-          <div style="display:grid;grid-template-columns:150px 1fr;gap:36px;padding:32px 0;border-top:1px solid rgba(10,31,69,.12);animation:rise .7s both;animation-delay:.1s">
+          <div class="m-tl" style="display:grid;grid-template-columns:150px 1fr;gap:36px;padding:32px 0;border-top:1px solid rgba(10,31,69,.12);animation:rise .7s both;animation-delay:.1s">
             <div>
-              <div style="font:600 44px/1 Sora,sans-serif;color:#1E63C8;letter-spacing:-.03em">10</div>
+              <div class="m-num-md" style="font:600 44px/1 Sora,sans-serif;color:#1E63C8;letter-spacing:-.03em">10</div>
               <div style="margin-top:6px;font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8A94A6">dias úteis</div>
             </div>
             <div>
@@ -379,9 +417,9 @@ a:hover{color:#0A1F45}
               <p style="margin:12px 0 0;max-width:820px;font:400 17px/1.65 Manrope,sans-serif;color:#5B6779">Realização de workshop técnico conjunto entre Mondelēz e a equipe de TI/Sistemas da Apisul no prazo de 10 dias úteis para redesenhar as APIs.</p>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:150px 1fr;gap:36px;padding:32px 0;border-top:1px solid rgba(10,31,69,.12);animation:rise .7s both;animation-delay:.2s">
+          <div class="m-tl" style="display:grid;grid-template-columns:150px 1fr;gap:36px;padding:32px 0;border-top:1px solid rgba(10,31,69,.12);animation:rise .7s both;animation-delay:.2s">
             <div>
-              <div style="font:600 44px/1 Sora,sans-serif;color:#1E63C8;letter-spacing:-.03em">RJ</div>
+              <div class="m-num-md" style="font:600 44px/1 Sora,sans-serif;color:#1E63C8;letter-spacing:-.03em">RJ</div>
               <div style="margin-top:6px;font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8A94A6">rota piloto</div>
             </div>
             <div>
@@ -389,9 +427,9 @@ a:hover{color:#0A1F45}
               <p style="margin:12px 0 0;max-width:820px;font:400 17px/1.65 Manrope,sans-serif;color:#5B6779">A primeira implementação de alteração dinâmica ou sucessão atômica de SMPs será implantada e testada na rota com destino ao RJ.</p>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:150px 1fr;gap:36px;padding:32px 0;border-top:1px solid rgba(10,31,69,.12);border-bottom:1px solid rgba(10,31,69,.12);animation:rise .7s both;animation-delay:.3s">
+          <div class="m-tl" style="display:grid;grid-template-columns:150px 1fr;gap:36px;padding:32px 0;border-top:1px solid rgba(10,31,69,.12);border-bottom:1px solid rgba(10,31,69,.12);animation:rise .7s both;animation-delay:.3s">
             <div>
-              <div style="font:600 44px/1 Sora,sans-serif;color:#1E63C8;letter-spacing:-.03em">0</div>
+              <div class="m-num-md" style="font:600 44px/1 Sora,sans-serif;color:#1E63C8;letter-spacing:-.03em">0</div>
               <div style="margin-top:6px;font:600 11px Manrope,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#8A94A6">decisão manual</div>
             </div>
             <div>
@@ -401,7 +439,7 @@ a:hover{color:#0A1F45}
           </div>
         </div>
 
-        <div style="margin-top:48px;padding:44px;border-radius:22px;background:linear-gradient(150deg,#0A1F45,#123A7A);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;animation:rise .8s both;animation-delay:.4s">
+        <div class="m-pad" style="margin-top:48px;padding:44px;border-radius:22px;background:linear-gradient(150deg,#0A1F45,#123A7A);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;animation:rise .8s both;animation-delay:.4s">
           <div>
             <div style="font:600 11px Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7FB0FF">Compromisso conjunto</div>
             <div style="margin-top:14px;font:600 clamp(22px,2.4vw,32px)/1.2 Sora,sans-serif;letter-spacing:-.02em;max-width:720px">Proteção contínua: nenhuma carga em trânsito sem cobertura sistêmica ativa.</div>
@@ -413,7 +451,7 @@ a:hover{color:#0A1F45}
 
   </main>
 
-  <div style="position:fixed;right:26px;bottom:26px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px">
+  <div class="m-fab" style="position:fixed;right:26px;bottom:26px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px">
     <sc-if value="{{ notesOpen }}">
       <div style="width:min(420px,calc(100vw - 60px));padding:24px 26px;border-radius:16px;background:#0A1F45;color:#fff;box-shadow:0 26px 60px rgba(5,17,40,.4);animation:riseSm .4s both">
         <div style="font:600 10.5px Manrope,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#7FB0FF">Notas do apresentador</div>
@@ -494,6 +532,21 @@ a:hover{color:#0A1F45}
   setInterval(init, 400);
   if (document.readyState !== 'loading') init();
   else document.addEventListener('DOMContentLoaded', init);
+
+  /* Mantém a aba ativa visível na faixa de navegação (mobile) */
+  function syncNav(){
+    var nav = document.querySelector('header nav');
+    if (!nav || nav.scrollWidth <= nav.clientWidth + 4) return;
+    var active = [].find.call(nav.querySelectorAll('button'), function(b){
+      return /rgb\(10, 31, 69\)/.test(getComputedStyle(b).backgroundColor);
+    });
+    if (!active) return;
+    var nr = nav.getBoundingClientRect(), br = active.getBoundingClientRect();
+    if (br.left < nr.left || br.right > nr.right){
+      nav.scrollTo({ left: nav.scrollLeft + (br.left - nr.left) - (nr.width - br.width) / 2, behavior: 'smooth' });
+    }
+  }
+  setInterval(syncNav, 450);
 })();
 </script>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
