@@ -59,7 +59,8 @@ a:hover{color:#0A1F45}
 
     <sc-if value="{{ isT1 }}" hint-placeholder-val="{{ true }}">
       <section data-screen-label="01 Capa" style="position:relative;min-height:calc(100vh - 74px);background:linear-gradient(150deg,#0A1F45 0%,#0E2B5E 48%,#123A7A 100%);overflow:hidden;display:flex;align-items:center">
-        <div style="position:absolute;inset:0;opacity:.5;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:26px 26px"></div>
+        <canvas id="beams-bg" style="position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none"></canvas>
+        <div style="position:absolute;inset:0;opacity:.35;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1px);background-size:26px 26px"></div>
         <div style="position:absolute;top:-140px;right:-80px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(58,124,220,.55),rgba(10,31,69,0) 65%);transform:translate(calc(var(--mx,0) * 26px),calc(var(--my,0) * 26px));transition:transform .5s cubic-bezier(.2,.8,.2,1)"></div>
         <div style="position:absolute;bottom:-180px;left:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(208,52,44,.34),rgba(10,31,69,0) 62%);transform:translate(calc(var(--mx,0) * -20px),calc(var(--my,0) * -20px));transition:transform .6s cubic-bezier(.2,.8,.2,1)"></div>
 
@@ -428,6 +429,73 @@ a:hover{color:#0A1F45}
 </div>
 
 </x-dc>
+
+<script>
+(function(){
+  var raf, canvas, ctx, beams = [], w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2), t = 0;
+  function rnd(a,b){ return a + Math.random()*(b-a); }
+  function build(){
+    var count = Math.floor((w||window.innerWidth) / 22) + 8;
+    beams = [];
+    for (var i=0;i<count;i++){
+      beams.push({
+        x: rnd(0, w), y: rnd(0, h*1.4), width: rnd(30, 90),
+        length: rnd(h*0.7, h*1.6), speed: rnd(0.4, 1.6),
+        hue: 210 + rnd(-16, 24), opacity: rnd(0.14, 0.42),
+        pulse: rnd(0, Math.PI*2), pulseSpeed: rnd(0.006, 0.02)
+      });
+    }
+  }
+  function resize(){
+    var r = canvas.getBoundingClientRect();
+    w = r.width; h = r.height;
+    canvas.width = w*dpr; canvas.height = h*dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    build();
+  }
+  function frame(){
+    if (!canvas || !canvas.isConnected){ canvas = null; cancelAnimationFrame(raf); return; }
+    t += 1;
+    ctx.clearRect(0,0,w,h);
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.filter = 'blur(28px)';
+    for (var i=0;i<beams.length;i++){
+      var b = beams[i];
+      b.y -= b.speed; b.pulse += b.pulseSpeed;
+      if (b.y + b.length < -40){ b.y = h + rnd(40, h*0.6); b.x = rnd(0, w); }
+      var op = b.opacity * (0.6 + 0.4*Math.sin(b.pulse));
+      var g = ctx.createLinearGradient(b.x, b.y, b.x + b.width*0.4, b.y + b.length);
+      g.addColorStop(0, 'hsla('+b.hue+',85%,65%,0)');
+      g.addColorStop(0.5, 'hsla('+b.hue+',85%,65%,'+op+')');
+      g.addColorStop(1, 'hsla('+b.hue+',85%,65%,0)');
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      ctx.rotate(-0.14);
+      ctx.fillStyle = g;
+      ctx.fillRect(-b.width/2, 0, b.width, b.length);
+      ctx.restore();
+    }
+    ctx.filter = 'none';
+    ctx.globalCompositeOperation = 'source-over';
+    raf = requestAnimationFrame(frame);
+  }
+  function init(){
+    var el = document.getElementById('beams-bg');
+    if (!el || el === canvas){ return; }
+    canvas = el; ctx = canvas.getContext('2d');
+    resize();
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(frame);
+    if (!window.__beamsResize){
+      window.__beamsResize = true;
+      window.addEventListener('resize', function(){ if (canvas) resize(); });
+    }
+  }
+  setInterval(init, 400);
+  if (document.readyState !== 'loading') init();
+  else document.addEventListener('DOMContentLoaded', init);
+})();
+</script>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
 const TABS = [
   { num: "01", label: "Capa", note: "Abertura: parceria Mondelēz & Apisul, foco em eliminar o risco de cancelamento de SMP." },
